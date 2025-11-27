@@ -1,9 +1,12 @@
 package com.akhona;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Student {
+
+    @Id
     private int rollNo;
     private String sName;
     private int sAge;
