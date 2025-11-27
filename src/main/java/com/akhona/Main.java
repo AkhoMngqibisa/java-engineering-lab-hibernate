@@ -14,6 +14,9 @@ public class Main {
         student.setsAge(22);
 
         Configuration configuration = new Configuration();
+        configuration.addAnnotatedClass(Student.class);
+        configuration.configure();
+
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
 
