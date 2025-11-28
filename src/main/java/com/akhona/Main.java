@@ -10,9 +10,9 @@ public class Main {
     public static void main(String[] args) {
 
         Student student = new Student();
-        student.setRollNo(126);
-        student.setsName("Amanda");
-        student.setsAge(20);
+        student.setRollNo(127);
+        student.setsName("Zintle");
+        student.setsAge(29);
 
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Student.class);
