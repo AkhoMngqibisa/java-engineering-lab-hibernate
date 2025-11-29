@@ -65,6 +65,7 @@ public class Main {
     public void updateStudent(Student student) {
         getSession().merge(student);
 
+        getTransaction().commit();
         getSessionFactory().close();
         getSession().close();
 
