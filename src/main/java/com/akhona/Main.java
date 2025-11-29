@@ -59,21 +59,31 @@ public class Main {
         getSession().close();
         getSessionFactory().close();
 
-        System.out.println("Student retrieved successfully "+retrievedStudent);
+        System.out.println("Student retrieved successfully " + retrievedStudent);
+    }
+
+    public void updateStudent(Student student) {
+        getSession().merge(student);
+
+        getSessionFactory().close();
+        getSession().close();
+
+        System.out.println("Student updated successfully " + student);
     }
 
     public static void main(String[] args) {
+        Student student = new Student();
+        student.setRollNo(128);
+        student.setsAge(28);
+        student.setsName("Andile");
 
         Main main = new Main();
         main.setSessionFactory();
         main.setSession();
         main.setTransaction();
-
         // main.createStudent(new Student());
-
-        Student student = new Student();
-        student.setRollNo(128);
-        main.getStudent(student);
+        // main.getStudent(student);
+        main.updateStudent(student);
 
     }
 }
