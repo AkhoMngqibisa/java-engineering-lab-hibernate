@@ -7,25 +7,60 @@ import org.hibernate.cfg.Configuration;
 
 
 public class Main {
-    public static void main(String[] args) {
 
-        Student student = new Student();
-        student.setRollNo(127);
-        student.setsName("Zintle");
-        student.setsAge(29);
+    private static SessionFactory sessionFactory;
+    private static Session session;
+    private static Transaction transaction;
 
-        SessionFactory sessionFactory = new Configuration()
+    private void setSessionFactory() {
+        sessionFactory = new Configuration()
                 .addAnnotatedClass(Student.class)
                 .configure()
                 .buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+    }
 
-        session.persist(student);
-        transaction.commit();
+    private void setSession() {
+        session = getSessionFactory().openSession();
+    }
 
-        session.close();
-        System.out.println(student);
+    private void setTransaction() {
+        transaction = getSession().beginTransaction();
+    }
+
+    private SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    private Session getSession() {
+        return session;
+    }
+
+    private Transaction getTransaction() {
+        return transaction;
+    }
+
+    public void createStudent(Student student) {
+        student.setRollNo(128);
+        student.setsName("Andile");
+        student.setsAge(26);
+
+        getSession().persist(student);
+        getTransaction().commit();
+
+        getSession().close();
+        getSessionFactory().close();
+
+        System.out.println("Student created successfully");
+    }
+
+    public static void main(String[] args) {
+
+        Main main = new Main();
+        main.setSessionFactory();
+        main.setSession();
+        main.setTransaction();
+
+        main.createStudent(new Student());
 
     }
 }
