@@ -14,17 +14,17 @@ public class Main {
         student.setsName("Zintle");
         student.setsAge(29);
 
-        Configuration configuration = new Configuration();
-        configuration.addAnnotatedClass(Student.class);
-        configuration.configure();
-
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        SessionFactory sessionFactory = new Configuration()
+                .addAnnotatedClass(Student.class)
+                .configure()
+                .buildSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
         session.persist(student);
         transaction.commit();
 
+        session.close();
         System.out.println(student);
 
     }
