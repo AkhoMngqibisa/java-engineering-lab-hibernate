@@ -53,6 +53,15 @@ public class Main {
         System.out.println("Student created successfully");
     }
 
+    public void getStudent(Student student) {
+        Student retrievedStudent = getSession().find(Student.class, student.getRollNo());
+
+        getSession().close();
+        getSessionFactory().close();
+
+        System.out.println("Student retrieved successfully "+retrievedStudent);
+    }
+
     public static void main(String[] args) {
 
         Main main = new Main();
@@ -60,7 +69,11 @@ public class Main {
         main.setSession();
         main.setTransaction();
 
-        main.createStudent(new Student());
+        // main.createStudent(new Student());
+
+        Student student = new Student();
+        student.setRollNo(128);
+        main.getStudent(student);
 
     }
 }
