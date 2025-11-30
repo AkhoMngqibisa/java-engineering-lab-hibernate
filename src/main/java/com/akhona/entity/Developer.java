@@ -15,7 +15,7 @@ public class Developer {
     private String firstName;
     private String lastName;
     private String technology;
-    private String laptop;
+    private Laptop laptop;
 
 
     public int getId() {
@@ -50,11 +50,22 @@ public class Developer {
         this.technology = technology;
     }
 
-    public String getLaptop() {
+    public Laptop getLaptop() {
         return laptop;
     }
 
-    public void setLaptop(String laptop) {
+    public void setLaptop(Laptop laptop) {
         this.laptop = laptop;
+    }
+
+    @Override
+    public String toString() {
+        return "Developer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", technology='" + technology + '\'' +
+                ", laptop=" + laptop +
+                '}';
     }
 }
