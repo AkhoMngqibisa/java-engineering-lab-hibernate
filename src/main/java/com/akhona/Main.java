@@ -66,17 +66,24 @@ public class Main {
         getSession().merge(student);
 
         getTransaction().commit();
-        getSessionFactory().close();
         getSession().close();
+        getSessionFactory().close();
 
         System.out.println("Student updated successfully " + student);
+    }
+
+    public void deleteStudent(Student student) {
+        getSession().remove(student);
+
+        getTransaction().commit();
+
+        getSession().close();
+        getSessionFactory().close();
     }
 
     public static void main(String[] args) {
         Student student = new Student();
         student.setRollNo(128);
-        student.setsAge(28);
-        student.setsName("Andile");
 
         Main main = new Main();
         main.setSessionFactory();
@@ -84,7 +91,7 @@ public class Main {
         main.setTransaction();
         // main.createStudent(new Student());
         // main.getStudent(student);
-        main.updateStudent(student);
-
+        // main.updateStudent(student);
+        // main.deleteStudent(student);
     }
 }
