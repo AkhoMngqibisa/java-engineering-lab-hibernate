@@ -1,4 +1,4 @@
-package com.akhona;
+package com.akhona.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
