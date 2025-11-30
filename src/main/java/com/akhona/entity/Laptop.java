@@ -29,4 +29,13 @@ public class Laptop {
     public void setRam(int ram) {
         this.ram = ram;
     }
+
+    @Override
+    public String toString() {
+        return "Laptop{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", ram=" + ram +
+                '}';
+    }
 }
