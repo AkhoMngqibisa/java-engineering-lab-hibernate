@@ -27,15 +27,15 @@ public class DeveloperService {
         this.transaction = getSession().beginTransaction();
     }
 
-    private SessionFactory getSessionFactory() {
+    public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
-    private Session getSession() {
+    public Session getSession() {
         return session;
     }
 
-    private Transaction getTransaction() {
+    public Transaction getTransaction() {
         return transaction;
     }
 
