@@ -6,9 +6,7 @@ import com.akhona.service.DeveloperService;
 
 public class Main {
 
-    private DeveloperService developerService;
-
-    public void createDeveloper() {
+    public static Developer buildDeveloper() {
         Laptop laptop = new Laptop();
         laptop.setBrand("Lenovo");
         laptop.setModel("i7");
@@ -20,19 +18,16 @@ public class Main {
         developer.setTechnology("Java");
         developer.setLaptop(laptop);
 
-        developerService.createDeveloper(developer);
-        developerService.getSession().persist(developer);
-        developerService.getTransaction().commit();
-
-        developerService.getSession().close();
-        developerService.getSessionFactory().close();
-
-        System.out.println("Developer created successfully");
+        return developer;
     }
 
     public static void main(String[] args) {
+        DeveloperService developerService = new DeveloperService();
 
-        Main main = new Main();
-        main.createDeveloper();
+        developerService.setSessionFactory();
+        developerService.setSession();
+        developerService.setTransaction();
+
+        developerService.createDeveloper(buildDeveloper());
     }
 }

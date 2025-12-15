@@ -12,18 +12,18 @@ public class DeveloperService {
     private Session session;
     private Transaction transaction;
 
-    private void setSessionFactory(SessionFactory sessionFactory) {
+    public void setSessionFactory() {
         this.sessionFactory = new Configuration()
                 .addAnnotatedClass(Developer.class)
                 .configure()
                 .buildSessionFactory();
     }
 
-    private void setSession(Session session) {
+    public void setSession() {
         this.session = getSessionFactory().openSession();
     }
 
-    private void setTransaction(Transaction transaction) {
+    public void setTransaction() {
         this.transaction = getSession().beginTransaction();
     }
 
@@ -45,5 +45,13 @@ public class DeveloperService {
         developer.setLastName(developer.getLastName());
         developer.setTechnology(developer.getTechnology());
         developer.setLaptop(developer.getLaptop());
+
+        getSession().persist(developer);
+        getTransaction().commit();
+
+        getSession().close();
+        getSessionFactory().close();
+
+        System.out.println("Developer created successfully");
     }
 }
