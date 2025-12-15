@@ -1,7 +1,9 @@
 package com.akhona.service;
 
 import com.akhona.entity.Developer;
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class DeveloperService {
@@ -35,5 +37,13 @@ public class DeveloperService {
 
     private Transaction getTransaction() {
         return transaction;
+    }
+
+    public void createDeveloper(Developer developer) {
+        developer.setId(developer.getId());
+        developer.setFirstName(developer.getFirstName());
+        developer.setLastName(developer.getLastName());
+        developer.setTechnology(developer.getTechnology());
+        developer.setLaptop(developer.getLaptop());
     }
 }
